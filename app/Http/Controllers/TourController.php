@@ -11,6 +11,7 @@ class TourController extends Controller
 	public function __construct()
 	{
 		$this->middleware('auth:api')->except('all');
+		$this->middleware('can:join festival')->except('all');
 	}
 	
 	public function all(Request $request)
