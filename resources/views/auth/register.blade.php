@@ -1,0 +1,80 @@
+<x-guest-layout>
+    <x-auth-card>
+        <x-slot name="logo">
+            <a href="/">
+                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+            </a>
+        </x-slot>
+
+        <!-- Validation Errors -->
+        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+
+        <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+            @csrf
+
+            <!-- Name -->
+            <div>
+                <x-label for="name" :value="__('Name')" />
+
+                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
+            </div>
+
+            <!-- Stage Name -->
+            <div class="mt-4">
+                <x-label for="stage_name" :value="__('Stage Name')" />
+
+                <x-input id="stage_name" class="block mt-1 w-full" type="text" name="stage_name" :value="old('stage_name')" placeholder="DJ ----" required />
+            </div>
+
+            <!-- Email Address -->
+            <div class="mt-4">
+                <x-label for="email" :value="__('Email')" />
+
+                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+            </div>
+
+            <!-- Birthdate -->
+            <div class="mt-4">
+                <x-label for="birthdate" :value="__('Birthdate')" />
+
+                <x-input id="birthdate" class="block mt-1 w-full" type="text" name="birthdate" :value="old('birthdate')" placeholder="DD-MM-YYYY" required />
+            </div>
+
+            <!-- Birthdate -->
+            <div class="mt-4">
+                <x-label for="avatar" :value="__('Picture')" />
+
+                <x-input id="avatar" class="block mt-1 w-full" type="file" name="avatar" required />
+            </div>
+
+            <!-- Password -->
+            <div class="mt-4">
+                <x-label for="password" :value="__('Password')" />
+
+                <x-input id="password" class="block mt-1 w-full"
+                                type="password"
+                                name="password"
+                                required autocomplete="new-password" />
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="mt-4">
+                <x-label for="password_confirmation" :value="__('Confirm Password')" />
+
+                <x-input id="password_confirmation" class="block mt-1 w-full"
+                                type="password"
+                                name="password_confirmation" required />
+            </div>
+
+            <div class="flex items-center justify-end mt-4">
+                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
+                    {{ __('Already registered?') }}
+                </a>
+
+                <x-button class="ml-4">
+                    {{ __('Register') }}
+                </x-button>
+            </div>
+        </form>
+    </x-auth-card>
+</x-guest-layout>

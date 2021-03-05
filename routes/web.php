@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TourController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +17,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', HomeController::class)->name('home');
+Route::get('/profile/{user}', ProfileController::class)->name('profile');
+Route::middleware('auth')->get('/tour', [ TourController::class, 'all' ])->name('tour');
+
+Route::get('/dashboard', function () {
+	return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';

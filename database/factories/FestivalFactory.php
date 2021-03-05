@@ -22,7 +22,8 @@ class FestivalFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->name,
+            'points' => rand(0, 1000)
         ];
     }
 }
