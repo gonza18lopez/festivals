@@ -30,11 +30,11 @@
 						<a class="nav-link" href="{{ route('home') }}">Home</a>
 					</li>
 
-					@auth
+					@can('join festival')
 					<li class="nav-item">
 						<a class="nav-link" href="{{ route('tour') }}">Tour</a>
 					</li>
-					@endauth
+					@endcan
 				</ul>
 
 				@if (Route::has('login'))
